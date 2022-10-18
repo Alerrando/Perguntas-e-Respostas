@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
 
+// Estou dizendo ao Express usar o EJS como view engine
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
-    res.send("Bem vindo ao meu site");
+    res.render("index")
 })
 
 app.listen(8000, () => {
