@@ -1,0 +1,11 @@
+{
+  "name": "perguntasresposta",
+  "version": "1.0.0",
+  "description": "Uma plataforma de perguntas e respostas ao estilo Yahoo respostas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alerrando Breno",
+  "license": "ISC"
+}
