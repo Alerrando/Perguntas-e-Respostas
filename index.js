@@ -5,24 +5,10 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-app.get("/:nome/:lang", (req, res) => {
-    let {nome, lang} = req.params
-    let exibirMSG = true;
+app.get("/", (req, res) => {
 
-    let produtos = [
-        {nome: "Doritos", preco: 3.14},
-        {nome: "Coca-Cola", preco: 5},
-        {nome: "Leite", preco:1.45},
-    ];
 
-    res.render("index", {
-        nome: nome,
-        lang: lang,
-        empresa: "Guia do Programador",
-        idade: 19,
-        msg: exibirMSG,
-        produtos: produtos,
-    })
+    res.render("index")
 })
 
 app.listen(8000, () => {
