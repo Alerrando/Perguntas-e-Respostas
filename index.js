@@ -13,6 +13,7 @@ app.get("/perguntar", (req, res) => {
     res.render("perguntar")
 })
 
+
 app.listen(8000, () => {
     console.log("App rodando!");
 });
