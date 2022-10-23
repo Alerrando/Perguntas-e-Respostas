@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Perguntas e Respostas</title>
 </head>
 <body>
-    <div class="container">
-        <h3>Realizar pergunta</h3>
-        <form>
-            <label>Título</label>
-            <input type="text" placeholder="Título" class="form-control">
-            <span>Descrição</span>
-            <textarea placeholder="Descreva sua pergunta aqui..." class="form-control" cols="30" rows="10"></textarea>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/" class="navbar-brand">
+            <img src="/img/favicon.ico" alt="">
+        </a>
+    </nav>
 
-            <button class="btn btn-success">Perguntar</button>
-        </form>
+    <div class="container">
+        <div class="card" id="formulario-pergunta">
+            <div class="card-header">
+                <h3>Realizar pergunta</h3>
+            </div>
+
+            <div class="card-body">
+                <form>
+                    <label>Título</label>
+                    <input type="text" placeholder="Título" class="form-control">
+                    <br>
+                    <span>Descrição</span>
+                    <textarea placeholder="Descreva sua pergunta aqui..." class="form-control" cols="30" rows="10"></textarea>
+                    <br>
+                    <button class="btn btn-success">Perguntar</button>
+                </form>
+            </div>
+        </div>
+        
     </div>
 
 
