@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
-const { connection } = require("./database");
+const connection = require("./database");
 
-const Pergunta = connection.define("pergunta", {
+const Pergunta = connection.define('pergunta', {
     titulo: {
         type: Sequelize.STRING,
         allowNull: null
@@ -13,4 +13,4 @@ const Pergunta = connection.define("pergunta", {
 });
 
 // não vai força a criação da tabela se ela já existir
-Pergunta.sync({force: false})
+Pergunta.sync({force: false}).then(() => {});
