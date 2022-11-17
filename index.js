@@ -47,7 +47,17 @@ app.post("/salvarpergunta", (req, res) => {
 });
 
 app.get("/pergunta/:id", (req, res) => {
-  let { id } = res.params
+  let { id } = req.params
+
+  Perguntar.findOne({
+    where: { id: id }
+  }).then(pergunta => {
+    if(pergunta != undefined){
+      res.render("pergunta")
+    }else{
+      res.redirect("/")
+    }
+  })
 })
 
 app.listen(8000, () => {
