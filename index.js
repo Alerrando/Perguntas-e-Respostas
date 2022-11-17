@@ -22,14 +22,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  Perguntar.findAll({ raw:true, order:[
-    ['id', 'DESC']
-  ] }).then(perguntas => {
-    res.render("index", {
-      perguntas:perguntas
-    });
-
-  })
+  Perguntar.findAll({ raw: true, order: [["id", "DESC"]] }).then(
+    (perguntas) => {
+      res.render("index", {
+        perguntas: perguntas,
+      });
+    }
+  );
 });
 
 app.get("/perguntar", (req, res) => {
@@ -41,27 +40,48 @@ app.post("/salvarpergunta", (req, res) => {
 
   Perguntar.create({
     titulo: titulo,
-    descricao: descricao
+    descricao: descricao,
   }).then(() => {
-    res.redirect("/")
-  })
+    res.redirect("/");
+  });
 });
 
 app.get("/pergunta/:id", (req, res) => {
-  let { id } = req.params
+  let { id } = req.params;
 
   Perguntar.findOne({
-    where: { id: id }
-  }).then(pergunta => {
-    if(pergunta != undefined){
-      res.render("pergunta", {
-        pergunta: pergunta
+    where: { id: id },
+  }).then((pergunta) => {
+    if (pergunta != undefined) {
+      Resposta.findAll({
+        where: {
+          perguntaId: pergunta.id,
+        },
+        order:[
+          ["id", "DESC"]
+        ]
+      }).then(respostas => {
+        res.render("pergunta", {
+          pergunta: pergunta,
+          respostas: respostas,
+        });
       })
-    }else{
-      res.redirect("/")
+
+    } else {
+      res.redirect("/");
     }
-  })
-})
+  });
+});
+
+app.post("/responder", (req, res) => {
+  let { corpo, pergunta } = req.body;
+  Resposta.create({
+    corpo: corpo,
+    perguntaId: pergunta,
+  }).then(() => {
+    res.redirect(`/pergunta/${pergunta}`);
+  });
+});
 
 app.listen(8000, () => {
   console.log("App rodando!");
