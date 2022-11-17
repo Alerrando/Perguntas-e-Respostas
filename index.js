@@ -46,6 +46,10 @@ app.post("/salvarpergunta", (req, res) => {
   })
 });
 
+app.get("/pergunta/:id", (req, res) => {
+  let { id } = res.params
+})
+
 app.listen(8000, () => {
   console.log("App rodando!");
 });
