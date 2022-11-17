@@ -4,15 +4,11 @@ const connection = require("./database");
 const Pergunta = connection.define('pergunta', {
     titulo: {
         type: Sequelize.STRING,
-        validate:{
-            notEmpty: false,
-        },
+        allowNull: false
     },
     descricao: {
         type: Sequelize.TEXT,
-        validate:{
-            notEmpty: false,
-        },
+        allowNull: false
     }
 });
 
